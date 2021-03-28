@@ -1,6 +1,6 @@
 
 from flask import Flask, render_template, url_for, request, jsonify, make_response,flash,redirect, session
-#import pyrebase
+
 import os
 from werkzeug.utils import secure_filename
 from tensorflow.keras.models import load_model
@@ -15,9 +15,9 @@ import os
 import matplotlib.pyplot as plt
 import math
 import re
-#from scipy.misc import imsave
+
 from cv2 import cv2
-#from scipy import ndimage, misc # not required
+
 from numpy import unravel_index
 from operator import sub
 import keras
@@ -56,34 +56,28 @@ inputs = Input(shape=(216,64,1))
 L1 = Conv2D(64,kernel_size=(3,3),padding = "same",kernel_regularizer=regularizers.l2(weight_decay))(inputs)
 L2 = BatchNormalization()(L1)
 L2 = Activation('relu')(L2)
-#L3 = Lambda(maxpool_1,output_shape = shape)(L2)
 L3 = MaxPooling2D(pool_size=(2,2))(L2)
 L4 = Conv2D(64,kernel_size=(3,3),padding = "same",kernel_regularizer=regularizers.l2(weight_decay))(L3)
 L5 = BatchNormalization()(L4)
 L5 = Activation('relu')(L5)
-#L6 = Lambda(maxpool_2,output_shape = shape)(L5)
 L6 = MaxPooling2D(pool_size=(2,2))(L5)
 L7 = Conv2D(64,kernel_size=(3,3),padding = "same",kernel_regularizer=regularizers.l2(weight_decay))(L6)
 L8 = BatchNormalization()(L7)
 L8 = Activation('relu')(L8)
-#L9 = Lambda(maxpool_3,output_shape = shape)(L8)
 L9 = MaxPooling2D(pool_size=(2,2))(L8)
 L10 = Conv2D(64,kernel_size=(3,3),padding = "same",kernel_regularizer=regularizers.l2(weight_decay))(L9)
 L11 = BatchNormalization()(L10)
 L11 = Activation('relu')(L11)
 L12 = UpSampling2D(size = (2,2))(L11)
-#L12 = Lambda(unpool_3,output_shape = unpool_shape)(L11)
 L13 = Concatenate(axis = 3)([L8,L12])
 L14 = Conv2D(64,kernel_size=(3,3),padding = "same",kernel_regularizer=regularizers.l2(weight_decay))(L13)
 L15 = BatchNormalization()(L14)
 L15 = Activation('relu')(L15)
 L16 = UpSampling2D(size= (2,2))(L15)
-#L16 = Lambda(unpool_2,output_shape=unpool_shape)(L15)
 L17 = Concatenate(axis = 3)([L16,L5])
 L18 = Conv2D(64,kernel_size=(3,3),padding = "same",kernel_regularizer=regularizers.l2(weight_decay))(L17)
 L19 = BatchNormalization()(L18)
 L19 = Activation('relu')(L19)
-#L20 = Lambda(unpool_1,output_shape=unpool_shape)(L19)
 L20 = UpSampling2D(size=(2,2),name = "Layer19")(L19)
 L21 = Concatenate(axis=3)([L20,L2])
 L22 = Conv2D(64,kernel_size=(3,3),padding = "same",kernel_regularizer=regularizers.l2(weight_decay))(L21)
@@ -127,7 +121,6 @@ def denoiseImage(image):
     denoised = denoised.astype(np.uint8)
     return denoised
     
-# it should return image which later I woul append in the variable
 
 
 
