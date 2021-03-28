@@ -7,7 +7,7 @@
 
  `  pip install -r requirements.txt `
  
- 1. open `app.py` in VS Code. 
+ 1. open `app.py` in [VS Code.](https://code.visualstudio.com/download) 
  2. Write in python terminal `python app.py` and press enter
  3. Press ctrl + click on ip address. 
  you can also visuallized these step in the below image.
