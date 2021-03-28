@@ -5,5 +5,5 @@
 
 * Install Dependencies Open cmd in folder Solution-Challenge-Demo and run this command
 
- `<  pip install -r requirements.txt >`
+ `  pip install -r requirements.txt `
 
