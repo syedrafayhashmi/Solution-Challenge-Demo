@@ -1,0 +1,105 @@
+<!-- BEGIN: Subheader -->
+<div class="m-subheader ">
+	<div class="d-flex align-items-center">
+		<div class="mr-auto">
+			<h3 class="m-subheader__title m-subheader__title--separator">
+	Users
+			</h3>
+			<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+				<li class="m-nav__item m-nav__item--home">
+					<a href="#" class="m-nav__link m-nav__link--icon">
+						<i class="m-nav__link-icon la la-home"></i>
+					</a>
+				</li>
+				
+				
+				<li class="m-nav__item">
+					<a href="" class="m-nav__link">
+						<span class="m-nav__link-text">
+							List
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div>
+			
+		</div>
+	</div>
+</div>
+<!-- END: Subheader -->
+
+
+
+<div class="m-content m-portlet">
+
+
+	<div class="row">
+
+	   <a class="btn btn-primary " href="javascript:Open_model('basicModal','modalbody','EduPagesD/AddUser',0,'Add New','exampleModalLabel','larg')">+Add  New User</a>
+  
+		
+		 <div class="table-responsive">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered table-striped table-hover" id="sample_1_2">
+		<thead>
+<tr>
+<td width="5%"><strong>User id</strong></td>
+<td width="10%"><strong>User  name</strong></td>
+<td width="15%"><strong>Email</strong></td>
+<td width="12%"><strong>Type</strong></td>
+<td width="17%"><strong>Join date</strong></td>
+<td width="17%"><strong>Status</strong></td>
+<td width="9%"><strong>Action</strong></td>
+</tr>
+</thead><tbody>
+<?php $sql = mysql_query("SELECT a.*,b.name AS user_types FROM members a
+LEFT OUTER JOIN setups b ON a.user_type = b.setup_id
+
+where a.user_type in (2.02,2.03) order by user_id desc
+") or die(mysql_error());
+$ii = 1;
+while($row = mysql_fetch_array($sql)){
+
+$name = $row['name'];
+$email = $row['email'];
+$mobile = $row['mobile'];
+$name = $row['name'];
+$status = $row['status'];
+$user_id2 = $row['user_id'];
+$country_name = $row['country_name'];
+$user_type = $row['user_types'];
+$join_date = $row['create_date'];
+$usertypes = $row['user_type'];
+//$join_date = datechanger($join_date,'GMT-5','d-M-Y g:i A');
+//$join_date = strtotime($join_date);
+$join_date = date('d-M-Y g:i A',strtotime($join_date));
+
+$$status_label = '';
+$$status_labe2 = '';
+if($status=='1.01') $status_label = '<label class="m-badge m-badge--success m-badge--wide">Active</label>';
+if($status=='1.02') $status_label = '<label class="m-badge m-badge--warning m-badge--wide">Deactive</label>';
+
+if($usertypes=='2.02') $status_label2 = '<label class="m-badge m-badge--info m-badge--wide">Admin</label>';
+if($usertypes=='2.03') $status_label2 = '<label class="m-badge m-badge--pending m-badge--wide">Admission</label>';
+
+?>
+
+<tr>
+<td><?php echo $user_id2;?></td>
+<td><?php echo $name;?></td>
+<td><?php echo $email;?></td>
+<td><?php echo $status_label2;?></td>
+<td><?php echo $join_date;?></td>
+<td><?php echo $status_label;?></td>
+<td><i class="fa fa-edit" data-toggle="m-tooltip" data-placement="top" title="Edit" onClick="Open_model('basicModal','modalbody','EduPagesD/AddUser','<?php echo $user_id2;?>','Edit User: <?php echo $name;?>','exampleModalLabel','larg')"></i>      </td>
+</tr>
+
+<?php $ii++;}?>
+</tbody>
+</table>
+
+
+	</div>
+</div>
+
+</div>

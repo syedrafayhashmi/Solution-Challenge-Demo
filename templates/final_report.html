@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+	<!-- begin::Head -->
+	<head>
+		<meta charset="utf-8" />
+
+		<script src="static/assets/jquery.js" type="text/javascript"></script>
+		
+
+		<title>
+			Report
+		</title>
+		<meta name="description" content="Latest updates and statistic charts">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+		
+	<body >
+		<input type="hidden" id="message_print" value="{{data}}">
+		 
+		<h1 style="text-align: center;">ABC Hospital</h1>
+		<p>Patient Name:   {{ name }}</p>
+		<p>Age: {{ age }}</p>
+		<br>
+		<p>OCT Scanned Image:</p>
+		<img src={{ filename2 }} alt="" width="250" height="248">
+
+		<br>
+		<p>Retinal Layers Segmented Image:</p>
+		
+		<img src={{ filename1 }} alt="" width="400" height="200">
+			
+				
+		<table>
+			<tr>
+				<td style="background-color: #ff0000; color: black;">ILM: Inner Limiting Membrane</td>
+			</tr>
+			<tr>
+				<td style="background-color: #00ff00; color: black;">NFL-IFL: Nerve Fiber Layer to Inner Plexiform Layer</td>
+			</tr>
+			<tr>
+				<td style="background-color: #ffff00; color: black;">INL: Inner Nuclear Layer</td>
+			</tr>
+			<tr>
+				<td style="background-color: #00ffff; color: black;">OPL: Outer Plexiform Layer</td>
+			</tr>
+			<tr>
+				<td style="background-color: #ffff00; color: black;">ONL-ISM: Outer Nuclear layer to Inner Segment myeloid</td>
+			</tr>
+			<tr>
+				<td style="background-color:#ff0000; color: black;">ISE: Inner segment ellipsoid</td>
+			</tr>
+			<tr>
+				<td style="background-color:#ffff00; color: black;">OS-RPE: Outer segment to Retinal pigment epithelium</td>
+			</tr>
+		</table>
+
+
+		<!-- <img src="static/assets/uploads/Capture.PNG" alt="" width="200" height="200"> -->
+		<br>
+		<h3>Result</h3>
+		<p>The above Images shows that this patient is having <b>{{ result }}</b></p>
+		
+
+	
+
+
+		
+	</body>
+	<!-- end::Body -->
+</html>
+<!-- <script>
+$(document).ready(function(){
+	
+
+	var message_print=$('#message_print').val();
+	var array = Array.from(message_print);
+	
+
+	alert(array[count])
+
+
+});
+</script> -->
