@@ -17,3 +17,6 @@
  ![Step 3](https://github.com/syedrafayhashmi/Solution-Challenge-Demo/blob/main/step%203.PNG)
  
  # You are ready to go!
+
+![Dashboard](https://github.com/syedrafayhashmi/Solution-Challenge-Demo/blob/main/Dashboard.PNG)
+ 
